@@ -52,8 +52,8 @@ func (g *Game) Play() {
 					lastScore = player.Scores[i][0] // Last score for second roll
 				}
 				score := g.Ball.Roll(lastScore)
-				fmt.Print(player.Name, " ", score, "             ")
 				player.SetScore(i, j, score)
+				fmt.Print(player.Name, " ", score, player.TotalScore, "             ")
 				if player.IsStrike(j, score) {
 					fmt.Printf("%s Strike!!!!!!\n", player.Name)
 					break

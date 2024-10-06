@@ -16,10 +16,10 @@ func main() {
 	ss, _ := json.Marshal(arena)
 	fmt.Println(string(ss))
 	// Start multiple games on different lanes
-	go arena.StartGameOnLane([]string{"Kavu", "Bittu"}, 10)
-	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 10)
-	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 10)
-	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 10)
+	go arena.StartGameOnLane([]string{"Kavu", "Bittu"}, 5)
+	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 5)
+	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 5)
+	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 5)
 	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 10)
 	go arena.StartGameOnLane([]string{"Golu", "Akash"}, 10)
 
