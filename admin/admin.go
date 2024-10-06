@@ -1,6 +1,9 @@
 package admin
 
-import "bowlingGame/entities"
+import (
+	"bowlingGame/entities"
+	"fmt"
+)
 
 // go mod init github.com/kavishagarwal/bowlingGame
 type Admin struct {
@@ -21,6 +24,10 @@ func (a *Admin) AddLanes(number int) {
 
 func (a *Admin) RemoveLanes(id int) {
 	if id >= len(a.Arena.GetLanes()) {
+		return
+	}
+	if a.Arena.GetLanes()[id].IsOccupied() {
+		fmt.Println("Game is on, can't remove the lane")
 		return
 	}
 	a.Arena.RemoveLane(id)

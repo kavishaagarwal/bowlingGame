@@ -5,22 +5,31 @@ import (
 	"time"
 )
 
-type Ball struct {
-	//Number int
+const MaxPins = 10
+
+type Ball struct{}
+
+func init() {
+	rand.Seed(time.Now().UnixNano()) // Initialize random seed once
 }
 
-func NewBowl() *Ball {
-	return &Ball{
-		//Number: number,
-	}
+func NewBall() *Ball {
+	return &Ball{}
 }
 
-func (b *Ball) RollBowl(lastScore int) int {
-	rand.Seed(time.Now().UnixNano())
-	//Pins dropped can be fromm 0 to 10
-	if lastScore > 10 {
-		lastScore = lastScore / 2
+// Roll simulates rolling the ball and returning the number of pins dropped.
+func (b *Ball) Roll(lastScore int) int {
+	if lastScore < 0 || lastScore > MaxPins {
+		// Handle invalid lastScore
+		return 0
 	}
-	pinsDropped := rand.Intn(11 - lastScore)
+
+	// Calculate available pins based on lastScore
+	pinsAvailable := MaxPins - lastScore
+	if pinsAvailable < 0 {
+		pinsAvailable = 0
+	}
+
+	pinsDropped := rand.Intn(pinsAvailable + 1) // +1 to include pinsAvailable
 	return pinsDropped
 }
